@@ -64,6 +64,45 @@ Ba phương án cùng giải quyết tình huống người học chưa hiểu n
 
 # 5. Dữ liệu kiểm thử & Bài học:
 
+## Dữ kiện từ phiên kiểm thử do tôi dẫn dắt
+
+Tôi điều phối **Duyên, một tester ngoài nhóm**, trải nghiệm đủ ba phương án A/B/C. Các dữ kiện dưới đây được tổng hợp từ ghi chép, không phải trích dẫn nguyên văn:
+
+- **Option A:** Duyên đưa chuột vào slide, nhận thấy phần chữ có tương tác khi hover rồi bấm vào; không ghi nhận thắc mắc đáng kể.
+- **Option B:** Duyên bấm vào slide nhưng không thấy phản ứng, sau đó chờ câu hỏi xuất hiện mới tiếp tục tương tác.
+- **Option C2:** Duyên nhận biết thao tác kéo chọn vùng qua con trỏ dấu “+”. Sau khi yêu cầu giải thích, tester dừng đọc các lựa chọn; không ghi nhận bấm nhầm hoặc hỏi lại. Tester phát hiện không thể chọn hết phần ảnh mong muốn.
+- **Lựa chọn và đánh đổi:** Duyên chọn C2 vì muốn tự khoanh đúng phần cần hỏi, kể cả nội dung trực quan, và có thể hỏi sâu hoặc xin ví dụ. Tester chấp nhận thêm thao tác chọn vùng; muốn tự chọn nội dung, nhập câu hỏi khi cần và giao AI tìm ngữ cảnh, giải thích.
+
+Chi tiết được ghi trong [Prototype Feedback Note cá nhân](prototype-feedback-note.md). Chưa ghi nhận Duyên có dùng nút đối chiếu minh chứng hoặc thực tế bấm nút sửa yêu cầu hay không.
+
+## Tổng hợp ba phiên kiểm thử của nhóm
+
+| Người điều phối | Tester | Option được chọn | Phản hồi nổi bật |
+|---|---|---|---|
+| Đào Trọng Khang | Linh | **B — bản của Khang** | Đánh giá câu hỏi, ghi chú và ví dụ của B dễ theo dõi, nhưng thông báo xuất hiện sớm. Với C, gặp khó khăn ban đầu khi kéo thả và thấy việc tự nhập câu hỏi tăng công sức. |
+| Đỗ Trọng Bình | Duyên | **C2 — bản của Bình** | Muốn chủ động chọn đúng phần cần hỏi và điều chỉnh trọng tâm; chấp nhận thao tác khoanh vùng nhưng phát hiện lỗi không chọn được hết ảnh. |
+| Nguyễn Tiến Phát | Khuê | **C — bản của Bình** | Thấy A tiện và dễ dùng nhưng thiếu khả năng so sánh lý thuyết, hỏi theo ý muốn. Chọn C vì linh hoạt hơn, khá trực quan; góp ý hoàn thiện LLM. Nhận xét B có thể hữu ích nhưng gây phiền khi đang đọc và còn khó hiểu trong demo. |
+
+Theo [Group Feedback Synthesis](group-feedback-synthesis.md), **2/3 tester — Duyên và Khuê — chọn bản của Bình**. Nhóm quyết định phát triển tiếp **Option C2**, dựa trên lựa chọn này và các tín hiệu tích cực về quyền chủ động, khả năng hỏi đúng trọng tâm. Phản hồi của Linh được giữ làm dữ kiện đối trọng để cải thiện thao tác của C2.
+
+**Bài học rút ra:** Người học coi trọng khả năng tự chọn nội dung và thời điểm cần hỗ trợ, nhưng mức độ chấp nhận thao tác khác nhau. Giao diện cần dễ bắt đầu, lời giải thích đúng trọng tâm và có cách điều chỉnh khi chưa phù hợp. Việc được ưu tiên lựa chọn chưa đủ để kết luận giải pháp giúp học tốt hơn.
+
+## DECIDED — Next Change
+
+1. **Ưu tiên sửa vùng chọn ảnh:** Tái hiện lỗi, điều chỉnh giới hạn kéo chọn và kiểm tra preview ở mép ảnh, toàn ảnh và các kích thước cửa sổ.
+2. **Giảm công sức tương tác:** Làm rõ hướng dẫn, giữ chọn vùng nhanh và câu hỏi tùy chọn; thử gợi ý **Cho ví dụ / Giải thích đơn giản hơn**. Theo ghi chú cá nhân, tôi cũng đề xuất thử kết hợp bôi đen văn bản từ C1 vào luồng C2.
+3. **Chia nhỏ lời giải thích:** Trả lời trực tiếp và nêu ý chính trước, cho phép mở thêm ví dụ hoặc hỏi sâu; giữ khả năng sửa yêu cầu, đổi phần chọn và đối chiếu slide.
+4. **Hoàn thiện LLM và thử nhu cầu so sánh:** Phát triển phản hồi dựa trên nội dung được chọn và ngữ cảnh slide; thử bổ sung phần nội dung thứ hai để hỏi so sánh lý thuyết theo nhu cầu Khuê nêu.
+
+Đây là kế hoạch cho vòng tiếp theo, chưa phải các thay đổi đã hoàn thành. Khi thử lại, nhóm sẽ quan sát khả năng tự chọn đúng vùng, số lần chọn lại, thời gian gửi yêu cầu, thao tác sửa/đối chiếu và kiểm tra mức độ hiểu bằng câu hỏi kiến thức ngắn.
+
+## STILL UNPROVEN — Những ẩn số còn lại
+
+- Ba tester chưa đủ để khái quát ưu tiên C2 cho toàn bộ người học; chưa có số liệu chứng minh hiểu bài, ghi nhớ hoặc tiết kiệm thời gian tốt hơn A/B.
+- Chưa xác minh lỗi chọn ảnh đã được sửa hoặc các hướng cải tiến có giảm khó khăn thao tác mà Linh gặp hay không.
+- Chưa biết người học có chủ động kiểm tra minh chứng và sửa yêu cầu thành công khi kết quả chưa phù hợp không.
+- Prototype dùng phản hồi dựng sẵn; độ chính xác của LLM thật khi xử lý ảnh, bảng, câu hỏi tự do và so sánh lý thuyết vẫn cần kiểm thử riêng.
+
 # 6. AI Support Log
 
 - **Công cụ AI sử dụng:** ChatGPT/Codex để hỗ trợ sinh code giao diện prototype, gợi ý một số option và ý tưởng, đồng thời trau chuốt câu văn trong tài liệu.
